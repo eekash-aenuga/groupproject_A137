@@ -39,3 +39,15 @@ aggregate(Age ~ treatment, median, data = mh)
 
 #7 Mann–Whitney U Test
 wilcox.test(Age ~ treatment, data = mh)
+
+#8 Box Plot
+boxplot(Age ~ treatment,
+        data = mh,
+        main = "Age Differences by Treatment Seeking",
+        xlab = "Treatment (No / Yes)",
+        ylab = "Age",
+        col = c("lightyellow", "lightgreen"),
+        ylim = c(15, 55)
+)
+
+axis(side = 2, at = seq(15, 55, by = 5))
