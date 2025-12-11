@@ -36,3 +36,6 @@ curve(dnorm(x, mean = mean(mh$Age), sd = sd(mh$Age)),
 
 #6 Calculate median age for each treatment group
 aggregate(Age ~ treatment, median, data = mh)
+
+#7 Mann–Whitney U Test
+wilcox.test(Age ~ treatment, data = mh)
