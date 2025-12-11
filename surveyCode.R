@@ -19,7 +19,18 @@ mh <- mh %>%
            str_to_lower(treatment) %in% c("no","n","no ")  ~ "No",
            TRUE ~ as.character(treatment)))
 
-#5 Histogram and Curve
+#5 Create age groups
+mh$AgeGroup <- cut(
+  mh$Age,
+  breaks = c(18, 25, 35, 45, 55, 65, 80),
+  labels = c("18 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 80"),
+  right = TRUE,
+  include.lowest = TRUE
+)
+age_treatment_table <- table(mh$AgeGroup, mh$treatment)
+age_treatment_table
+
+#6 Histogram and Curve
 hist(mh$Age,
      breaks = 40,
      col = "lightblue",
@@ -33,13 +44,13 @@ axis(side = 1, at = c(15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65))
 curve(dnorm(x, mean = mean(mh$Age), sd = sd(mh$Age)),
       add = TRUE, lwd = 2)
 
-#6 Calculate median age for each treatment group
+#7 Calculate median age for each treatment group
 aggregate(Age ~ treatment, median, data = mh)
 
-#7 Mann–Whitney U Test
+#8 Mann–Whitney U Test
 wilcox.test(Age ~ treatment, data = mh)
 
-#8 Box Plot
+#9 Box Plot
 boxplot(Age ~ treatment,
         data = mh,
         main = "Age Differences by Treatment Seeking",
