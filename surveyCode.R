@@ -22,8 +22,8 @@ mh <- mh %>%
 #5 Create age groups
 mh$AgeGroup <- cut(
   mh$Age,
-  breaks = c(18, 25, 35, 45, 55, 65, 80),
-  labels = c("18 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 80"),
+  breaks = c(18, 25, 35, 45, 55, 65, 70),
+  labels = c("18 - 25", "26 - 35", "36 - 45", "46 - 55", "56 - 65", "66 - 70"),
   right = TRUE,
   include.lowest = TRUE
 )
