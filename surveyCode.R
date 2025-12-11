@@ -33,3 +33,6 @@ axis(side = 1, at = c(15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65))
 
 curve(dnorm(x, mean = mean(mh$Age), sd = sd(mh$Age)),
       add = TRUE, lwd = 2)
+
+#6 Calculate median age for each treatment group
+aggregate(Age ~ treatment, median, data = mh)
