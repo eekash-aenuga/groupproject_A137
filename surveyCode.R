@@ -19,3 +19,17 @@ mh <- mh %>%
            str_to_lower(treatment) %in% c("yes","y","yes ") ~ "Yes",
            str_to_lower(treatment) %in% c("no","n","no ")  ~ "No",
            TRUE ~ as.character(treatment)))
+
+#5 Histogram and Curve
+hist(mh$Age,
+     breaks = 40,
+     col = "lightblue",
+     freq = FALSE,
+     main = "Histogram of Age",
+     xlab = "Age",
+     xlim = c(15, 65)
+)
+axis(side = 1, at = c(15, 20, 25, 30, 35, 40, 45, 50, 55, 60, 65))
+
+curve(dnorm(x, mean = mean(mh$Age), sd = sd(mh$Age)),
+      add = TRUE, lwd = 2)
