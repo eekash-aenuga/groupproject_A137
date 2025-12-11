@@ -1,7 +1,6 @@
-#1 
+#1 Importing data set and printing first five rows
 library(tidyverse)
 mh <- read_csv("survey.csv")
-
 head(mh, 5)
 
 #2 Filtering required columns and removing rows with null values
